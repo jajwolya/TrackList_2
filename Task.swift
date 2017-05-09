@@ -10,6 +10,4 @@ import UIKit
 
 class Task: NSObject {
     var name: String?
-    var deadline: String?
-    var important: Bool?
 }

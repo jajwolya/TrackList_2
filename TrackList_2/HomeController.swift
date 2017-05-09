@@ -13,18 +13,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var tasks: [Task] = {
         var taskOne = Task()
         taskOne.name = "Finish TrackList"
-        taskOne.deadline = "Today"
-        taskOne.important = true
         
         var taskTwo = Task()
         taskTwo.name = "Go Home"
-        taskTwo.deadline = "Tonight"
-        taskTwo.important = false
         
         var taskThree = Task()
         taskThree.name = "Helpdesk"
-        taskThree.deadline = "Tomorrow"
-        taskThree.important = true
         
         return [taskOne, taskTwo, taskThree]
     }()

@@ -22,7 +22,6 @@ class AddTaskLauncher: NSObject, UICollectionViewDelegate, UICollectionViewDataS
     let cellId = "cellId"
     
     func showAddTask() {
-        print("Adding task...")
         
         if let window = UIApplication.shared.keyWindow {
             
@@ -62,11 +61,27 @@ class AddTaskLauncher: NSObject, UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        
+        let button = UIButton(frame: CGRect(x: 16, y: 16, width: 200, height: 50))
+        button.setTitle("Done", for: .normal)
+        button.backgroundColor = UIColor.blue
+        //button.addTarget(self, action: #selector(AddTaskCell.handleAddTask), for: UIControlEvents.touchUpInside)
+        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAddTask)))
+        
+        cell.addSubview(button)
         return cell
     }
     
+    @IBAction func handleAddTask() -> Void{
+        print("Adding task...")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     override init() {
